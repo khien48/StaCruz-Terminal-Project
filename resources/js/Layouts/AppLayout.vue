@@ -7,7 +7,7 @@ import Dropdown from "@/Components/Dropdown.vue";
 import DropdownLink from "@/Components/DropdownLink.vue";
 import NavLink from "@/Components/NavLink.vue";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
-import Sidebar from "@/Layouts/Sidebar.vue";
+
 
 defineProps({
   title: String,
@@ -66,7 +66,6 @@ const logout = () => {
                                     Hello
                                 </NavLink>
                             </div> -->
-                            
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ms-6">
@@ -215,8 +214,6 @@ const logout = () => {
                       </button>
                     </span>
                   </template>
-
-                  
 
                   <template #content>
                     <!-- Account Management -->
@@ -416,8 +413,8 @@ const logout = () => {
         </div>
       </nav>
 
-      <!-- Page Content -->
       <main>
+        <!-- Sidebar Content -->
         <v-app>
           <v-card>
             <v-layout>
@@ -431,20 +428,18 @@ const logout = () => {
                     <v-subheader class="label">Main Menu</v-subheader>
 
                     <div class="menus">
-
-                        <Link
+                      <Link
                         style="width: 240px"
                         :href="route('dashboard')"
                         :active="route().current('dashboard')"
                       >
-
-                      <v-list-item
-                        prepend-icon="mdi-view-dashboard"
-                        title="Dashboard"
-                        value="dashboard"
-                        router
-                      ></v-list-item>
-                    </Link>
+                        <v-list-item
+                          prepend-icon="mdi-view-dashboard"
+                          title="Dashboard"
+                          value="dashboard"
+                          router
+                        ></v-list-item>
+                      </Link>
 
                       <v-list-item
                         prepend-icon="mdi-account-group-outline"
@@ -484,7 +479,6 @@ const logout = () => {
                       ></v-list-item>
                     </div>
 
-                  
                     <v-subheader class="label">Account</v-subheader>
 
                     <div class="menus">
@@ -517,15 +511,17 @@ const logout = () => {
                 </v-list>
               </v-navigation-drawer>
 
+              <!-- Page Content -->
+
               <v-main>
                 <!-- Page Heading -->
                 <header v-if="$slots.header" class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                      <slot name="header" />
-                    </div>
-                  </header>
-  
-                  <slot />
+                  <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+                    <slot name="header" />
+                  </div>
+                </header>
+
+                <slot />
               </v-main>
             </v-layout>
           </v-card>
@@ -540,7 +536,6 @@ const logout = () => {
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
 * {
-
 }
 
 .logo {
@@ -549,7 +544,7 @@ const logout = () => {
 }
 
 ::-webkit-scrollbar {
-   display: none;
+  display: none;
 }
 
 .label {
@@ -562,8 +557,8 @@ const logout = () => {
   margin-top: 30px;
 }
 .menus {
-    font-family: "Poppins", sans-serif;
-    font-weight: bold; /* Make the text bold */
+  font-family: "Poppins", sans-serif;
+  font-weight: bold; /* Make the text bold */
   margin-left: 20px;
   margin-top: 10px;
 }

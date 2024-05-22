@@ -20,11 +20,11 @@ import SectionList from '@/Components/Section/SectionList.vue';
             <div class="card">
               <Splitter style="height: 620px" class="mb-5">
                 <SplitterPanel class="align-items-center justify-content-center" :size="25" :minSize="10">
-                  <SectionList />
+                  <SectionList />     <!-- section list component -->
                 </SplitterPanel>
                 <SplitterPanel class="align-items-center justify-content-center">
                   <v-main>
-                    <StudentList />
+                    <StudentList /> <!-- student list component -->
                   </v-main>
                 </SplitterPanel>
               </Splitter>
