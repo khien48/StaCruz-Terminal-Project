@@ -14,4 +14,8 @@ class Classroom extends Model
         'buildingName',
         'roomNumber',
     ];
+
+    public function getClassrooms(){
+        return $this->all();
+    }
 }

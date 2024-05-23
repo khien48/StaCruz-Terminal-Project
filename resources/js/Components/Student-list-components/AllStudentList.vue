@@ -99,6 +99,8 @@ import StudentMove from "@/Components/Student-list-components/StudentMove.vue";
               ></v-text-field>
             </v-card-text>
           </v-card>
+
+          
         </template>
       </v-card>
     </div>
@@ -196,28 +198,12 @@ export default {
       loading: false,
       dialog: false,
       items: [],
-      selectedGradeLevels: [],
       search: "",
     };
   },
   mounted() {
     this.getStudentList();
   },
-  computed: {
-    filteredItems() {
-    return this.items.filter((item) => {
-      const matchesGradeLevel = this.selectedGradeLevels.length
-        ? this.selectedGradeLevels.includes(item.grade_lvl)
-        : true;
-      const matchesSearch =
-        item.full_name.toLowerCase().includes(this.search.toLowerCase()) ||
-        item.lrn.toLowerCase().includes(this.search.toLowerCase()) ||
-        item.stu_gender.toLowerCase().includes(this.search.toLowerCase()) ||
-        this.getStatus(item.stu_status).toLowerCase().includes(this.search.toLowerCase());
-      return matchesGradeLevel && matchesSearch;
-    });
-  },
-},
   methods: {
     getStudentList() {
       axios.get("http://localhost:8000/api/students").then((res) => {

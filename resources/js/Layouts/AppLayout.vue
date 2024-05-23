@@ -441,7 +441,7 @@ const logout = () => {
                           router
                         ></v-list-item>
                       </Link>
-
+                    
                       <v-list-item
                         prepend-icon="mdi-account-group-outline"
                         title="Faculty and Staff List"
@@ -486,7 +486,8 @@ const logout = () => {
                       ></v-list-item>
                     </div>
 
-                    <v-subheader class="label">Account</v-subheader>
+                    <hr>
+                    <!-- <v-subheader class="label">Account</v-subheader> -->
 
                     <div class="menus">
                       <v-list-item
@@ -506,7 +507,7 @@ const logout = () => {
                         title="Report Problem"
                         value="report-problem"
                       ></v-list-item>
-
+                      <hr>
                       <v-list-item
                         class="logout-botton"
                         prepend-icon="mdi-logout"

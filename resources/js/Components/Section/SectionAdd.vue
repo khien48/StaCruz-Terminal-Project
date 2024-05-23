@@ -35,19 +35,13 @@
             <v-col cols="12" md="6">
               <div class="Subholder">Advisor's Name</div>
               <v-combobox
-                v-model="newSection.SectionAd"
+                 v-model="newSection.SectionAd"
                 variant="outlined"
                 clearable
                 density="compact"
-                :items="[
-                  'Reyes, Joan B.',
-                  'Lee, Kim C.',
-                  'Cador Shena B.',
-                  'Ramon, John M.',
-                  'Moreno, Isko A.',
-                  'Marcos, Money C.',
-                ]"
+                :items="comboboFaculty.map(faculty => faculty.fac_lname + ', ' + faculty.fac_fname + ' ' + faculty.fac_mname + ' ' + faculty.fac_suffix)"
               ></v-combobox>
+              
             </v-col>
 
             <v-col cols="12" md="6">
@@ -57,14 +51,7 @@
                 variant="outlined"
                 clearable
                 density="compact"
-                :items="[
-                  'NB 102',
-                  'NB 240',
-                  'AMS 43',
-                  'AMS 1',
-                  'JH 28',
-                  'JH 62',
-                ]"
+                :items="comboboClassroom.map(classroom => classroom.buildingName + ', ' + classroom.roomNumber)"
               ></v-combobox>
             </v-col>
           </v-row>
@@ -100,6 +87,18 @@ export default {
         dialog: false,
         loading: false,
 
+        comboboFaculty:{
+          fac_lname: "",
+          fac_fname: "",
+          fac_mname: "",
+          fac_suffix: "",
+
+        },
+        comboboClassroom:{
+          buildingName: "",
+          roomNumber: "",
+
+        },
         newSection: {
             SectionName: "",
             SectionGradeLvl: "",
@@ -107,6 +106,12 @@ export default {
             SectionRoomNo: "",
         },
     }),
+    mounted() {
+    this.getFacultyList();
+    this.getClassroom();
+    console.log('im here');
+  },
+
     methods: {
         async saveSection() {
             this.newSection.SectionName = this.newSection.SectionName.toUpperCase();
@@ -131,6 +136,18 @@ export default {
                 SectionRoomNo: "",
             };
         },
+        getFacultyList() {
+      axios.get("http://localhost:8000/api/faculties").then((res) => {
+        this.comboboFaculty = res.data.faculties;
+        console.log(this.comboboFaculty);
+      });
+    },
+    getClassroom() {
+      axios.get("http://localhost:8000/api/classrooms").then((res) => {
+        this.comboboClassroom = res.data.classrooms;
+        console.log(this.comboboClassroom);
+      });
+    },
     },
 
 };

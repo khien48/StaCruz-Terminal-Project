@@ -20,7 +20,6 @@ class Section extends Model
     ];
 
     public function getSectionList(){
-
         return $this->all();
     }
 

@@ -22,7 +22,7 @@ Route::get('/classrooms', [ClassroomController::class, 'index']);
 // --------------------------Section----------------------------- 
 
 Route::post('/sections', [SectionController::class, 'store'])->name('SectionList');
-
+Route::post('/students', [StudentController::class, 'store'])->name('StudentList');
 
 Route::get('/delete-section-list/{id}', [SectionController::class, 'delete'])->name('delete');
 Route::get('/delete-student-list/{lrn}', [StudentController::class, 'delete'])->name('delete');

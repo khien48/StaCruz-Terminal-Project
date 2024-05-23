@@ -52,10 +52,21 @@
             <v-col cols="12" md="6">
               <div class="Subholder">Sufixx</div>
               <v-text-field
+              v-model="newStudent.stu_suffix"
                 density="compact"
                 placeholder="Sufixx (Optional)"
                 variant="outlined"
               ></v-text-field>
+            </v-col>
+
+            <v-col>
+              <div class="Subholder">Gender</div>
+             
+                <v-radio-group v-model="gender" inline>
+                    <v-radio label="Male" value="M"></v-radio>
+                  <v-radio label="Female" value="F"></v-radio>
+                </v-radio-group>
+      
             </v-col>
           </v-row>
         </v-card-text>
@@ -85,14 +96,50 @@
   <script>
 export default {
   data: () => ({
+    gender: '',
     dialog: false,
+    newStudent: {
+      lrn: "",
+      stu_lname: "",
+      stu_fname: "",
+      stu_mname: "",
+      stu_suffix: "",
+      stu_address: "",
+      stu_gender: "",
+        },
   }),
   methods: {
+    async saveStudent() {
+            this.newStudent.SectionName = this.newStudent.SectionName.toUpperCase();
+
+            try {
+                const response = await axios.post('/api/sections', this.newStudent);
+                this.$emit('add-students', this.newStudent); // Emit the new Section data
+                this.$emit('projectAdded');
+                this.resetForm();
+            } catch (error) {
+                console.error('Error saving Student:', error);
+            }
+
+ 
+        },
+        resetForm() {
+            this.newStudent = {
+              lrn: "",
+      stu_lname: "",
+      stu_fname: "",
+      stu_mname: "",
+      stu_suffix: "",
+      stu_address: "",
+      stu_gender: "",
+            };
+        },
     saveEDIT() {
       // Implement your logic to save the book here
       console.log("Updated");
       // Close the dialog after saving
       this.dialog = false;
+      
     },
   },
 };
