@@ -8,7 +8,7 @@ import AllStudentList from '@/Components/Student-list-components/AllStudentList.
 
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Section List
+                Student List
             </h2>
         </template>
 

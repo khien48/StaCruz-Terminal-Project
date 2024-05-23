@@ -135,7 +135,7 @@ import StudentMove from "@/Components/Student-list-components/StudentMove.vue";
                 items.stu_suffix
               }}
             </td>
-            <td>{{ items.stu_gender }}</td>
+            <td>{{getGender(items.stu_gender) }}</td>
             <td>
               <v-card
                 class="statusStyle"
@@ -202,7 +202,6 @@ export default {
   },
   mounted() {
     this.getStudentList();
-    console.log("im here");
   },
   computed: {
     filteredItems() {
@@ -228,6 +227,7 @@ export default {
     },
     deleteStudent(lrn) {
       window.location.href = `/delete-student-list/${lrn}`;
+    
     },
     deleteSelectedStudents() {
       const selectedLRNs = this.items
@@ -261,6 +261,9 @@ export default {
     getStatus(status) {
       return status === 0 ? "Not Enrolled" : "Enrolled";
     },
+    getGender(gender) {
+  return gender === 'F' ? "Female" : "Male";
+},
   },
 };
 </script>
