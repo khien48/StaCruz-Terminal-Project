@@ -3,6 +3,7 @@
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SectionController;
+use App\Http\Controllers\StudentController;
 
 use Inertia\Inertia;
 
@@ -27,6 +28,11 @@ Route::middleware([
     })->name('dashboard');
 });
 
+
+Route::get('/studentlist', function () {
+    return Inertia::render('StudentList');
+})->name('studentlist');
+
 Route::get('/sectionlist', function () {
     return Inertia::render('Sectionlist');
 })->name('sectionlist');
@@ -38,5 +44,6 @@ Route::get('/sectionlist', function () {
 
 Route::post('/sections', [SectionController::class, 'store'])->name('SectionList');
 Route::get('/delete-section-list/{id}', [SectionController::class, 'delete'])->name('delete');
+Route::get('/delete-student-list/{lrn}', [StudentController::class, 'delete'])->name('delete');
 // Route::get('/', [SectionController::class, 'index'])->name('sections.store');
 

@@ -414,6 +414,7 @@ const logout = () => {
       </nav>
 
       <main>
+
         <!-- Sidebar Content -->
         <v-app>
           <v-card>
@@ -425,7 +426,7 @@ const logout = () => {
 
                 <v-list density="compact" color="teal" nav>
                   <v-list dense nav color="teal" grow>
-                    <v-subheader class="label">Main Menu</v-subheader>
+              
 
                     <div class="menus">
                       <Link
@@ -449,6 +450,11 @@ const logout = () => {
                         to="/test"
                       ></v-list-item>
 
+                      <Link
+                      style="width: 240px"
+                      :href="route('studentlist')"
+                      :active="route().current('studentlist')"
+                    >
                       <v-list-item
                         prepend-icon="mdi-account"
                         title="Student List"
@@ -457,6 +463,7 @@ const logout = () => {
                         to="/AllStudent"
                       >
                       </v-list-item>
+                    </Link>
 
                       <Link
                         style="width: 240px"

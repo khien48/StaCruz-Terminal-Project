@@ -16,6 +16,7 @@ class SectionController extends Controller
     function delete($id){
         $this->section->deleteSectionList($id);
         return back();
+        
     }
 
     function open($id){

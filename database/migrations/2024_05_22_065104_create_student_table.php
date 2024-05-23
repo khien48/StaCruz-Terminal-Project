@@ -22,7 +22,8 @@ return new class extends Migration
             $table->char('stu_gender', 1)->nullable(false);
             $table->binary('stu_form137')->nullable(false);
             $table->binary('stu_birthcerti', 1)->nullable(false);
-            $table->string('stu_status', 6)->nullable(false);
+            $table->string('grade_lvl', 6)->nullable(false);
+            $table->boolean('stu_status')->nullable();
             $table->timestamps();
         });
     }

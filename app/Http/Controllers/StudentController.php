@@ -8,6 +8,16 @@ use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
+    function __construct()
+    {
+        $this->students = new Student;
+    }
+
+    function delete($lrn){
+        $this->students->deleteStudentList($lrn);
+        return back();
+    }
+
     public function index()
     {
         $students = Student::all();
